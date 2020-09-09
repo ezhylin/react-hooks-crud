@@ -1,0 +1,53 @@
+import {useCallback, useState} from "react";
+import {coursesApi} from "./courses.api";
+
+export const useCourses = () => {
+  const [courses, setCourses] = useState([]);
+
+  const handleGetList = useCallback(() => {
+    return coursesApi.getList().then(data => {
+      setCourses(data)
+    });
+  }, [])
+
+  const handleDelete = useCallback((courseId) => {
+    return coursesApi.delete(courseId).then(() => {
+      const nextCourses = courses.filter((course) => course.id !== courseId);
+
+      setCourses(nextCourses);
+    })
+  }, [courses])
+
+  const handleCreate = (course) => {
+    return coursesApi.create(course).then((createdCourse) => {
+      setCourses([createdCourse, ...courses]);
+    });
+  }
+
+  const handleUpdate = (courseId, courseData) => {
+    return coursesApi.update(courseId, courseData).then(() => {
+      const nextCourses = courses.map((course) => courseId === course.id
+        ? ({...course, ...courseData})
+        : course
+      )
+
+      setCourses(nextCourses);
+    });
+  }
+
+  const handleSearch = (searchTerm) => {
+    const options = {queryParams: {searchTerm}};
+
+    coursesApi.getList(options).then((courseList) => {
+      setCourses(courseList);
+    });
+  }
+
+  return [courses, {
+    handleCreate,
+    handleDelete,
+    handleGetList,
+    handleSearch,
+    handleUpdate,
+  }];
+}

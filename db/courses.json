@@ -1,0 +1,52 @@
+{
+  "courses": [
+    {
+      "id": 2,
+      "title": "The course name",
+      "image": "https://source.unsplash.com/random",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, assumenda aut culpa cupiditate delectus dicta distinctio dolores ea enim eum ipsam iste quaerat quo quod reiciendis sint sit veritatis voluptatibus!"
+    },
+    {
+      "id": 3,
+      "title": "The course name",
+      "image": "https://source.unsplash.com/random",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, assumenda aut culpa cupiditate delectus dicta distinctio dolores ea enim eum ipsam iste quaerat quo quod reiciendis sint sit veritatis voluptatibus!"
+    },
+    {
+      "id": 4,
+      "title": "The course name",
+      "image": "https://source.unsplash.com/random",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, assumenda aut culpa cupiditate delectus dicta distinctio dolores ea enim eum ipsam iste quaerat quo quod reiciendis sint sit veritatis voluptatibus!"
+    },
+    {
+      "title": "Course title",
+      "description": "This is a first course created via the form",
+      "image": "https://source.unsplash.com/random",
+      "id": 7
+    },
+    {
+      "title": "Remove me",
+      "description": "check alert('hello');",
+      "image": "https://source.unsplash.com/random",
+      "id": 8
+    },
+    {
+      "title": "New course route",
+      "description": "The course has been created using /new route",
+      "image": "https://source.unsplash.com/random",
+      "id": 11
+    },
+    {
+      "title": "Update - work",
+      "description": "Check whether update works",
+      "image": "https://source.unsplash.com/random",
+      "id": 17
+    },
+    {
+      "title": "use effect",
+      "description": "",
+      "image": "https://source.unsplash.com/random",
+      "id": 20
+    }
+  ]
+}
