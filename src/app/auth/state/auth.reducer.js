@@ -7,7 +7,7 @@ const initialState = {
   error: undefined,
 };
 
-const reducer = (state, action) => {
+export const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case authActionTypes.LOG_IN: {
       return {
@@ -28,5 +28,3 @@ const reducer = (state, action) => {
     }
   }
 };
-
-export const authReducer = [reducer, initialState];

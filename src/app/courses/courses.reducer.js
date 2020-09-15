@@ -1,10 +1,10 @@
 import { coursesActionTypes } from './courses.action-types';
 
-export const initialState = {
+const initialState = {
   list: [],
 }
 
-export const reducer = (state, action) => {
+export const coursesReducer = (state = initialState, action) => {
   switch (action.type) {
     case coursesActionTypes.CREATE_COURSE: {
       return {
@@ -36,5 +36,3 @@ export const reducer = (state, action) => {
     }
   }
 }
-
-export const coursesReducer = [reducer, initialState];

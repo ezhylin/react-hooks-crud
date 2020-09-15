@@ -1,18 +1,20 @@
 import React from "react";
 import { Link as RouterLink, useHistory, useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Container from "@material-ui/core/Container";
 import Link from "@material-ui/core/Link";
 
 import {SearchForm} from "../../shared";
 import {CourseList} from "../components";
-import {useAppState} from "../../../store/AppStateProvider";
 import {coursesActions} from "../courses.actions";
 
 export const Dashboard = () => {
   const location = useLocation();
   const history = useHistory();
-  const { state, dispatch } = useAppState();
+
+  const dispatch = useDispatch();
+  const courses = useSelector(state => state.courses);
 
   const handleEdit = courseId => {
     history.push(`${location.pathname}/${courseId}`);
@@ -33,7 +35,7 @@ export const Dashboard = () => {
         </div>
       </div>
       <CourseList
-        courses={state.courses.list}
+        courses={courses.list}
         onDelete={handleDelete}
         onEdit={handleEdit}
       />

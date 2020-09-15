@@ -6,9 +6,9 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import {useHistory} from "react-router";
 import {Link} from "react-router-dom";
-import {useAppState} from "../../store";
 import {UserInfo} from "../user";
 import {authActions} from "../auth/state/auth.actions";
+import {useDispatch, useSelector} from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,9 +25,8 @@ const useStyles = makeStyles((theme) => ({
 export const Header = () => {
   const classes = useStyles();
   const { push } = useHistory();
-  const { state, dispatch } = useAppState();
-
-  const {user} = state.auth;
+  const dispatch = useDispatch();
+  const user = useSelector(({auth}) => auth.user);
 
   const handleLogout = () => {
     dispatch(authActions.logout());

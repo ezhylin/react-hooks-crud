@@ -1,12 +1,12 @@
 import React from "react";
+import {useDispatch} from "react-redux";
 import {useHistory} from 'react-router-dom';
 
 import {LoginForm} from "../components";
-import {useAppState} from "../../../store";
-import {authActions} from "../state/auth.actions";
+import {authActions} from "../state";
 
 export const SignIn = () => {
-  const { dispatch } = useAppState();
+  const dispatch = useDispatch();
   const { push } = useHistory();
 
   const handleLogin = (credentials) => {

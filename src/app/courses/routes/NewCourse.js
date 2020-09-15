@@ -1,12 +1,14 @@
 import React from "react";
+import {useDispatch} from "react-redux";
 
 import Button from "@material-ui/core/Button";
+
 import { CourseForm } from '../components';
 import { coursesActions } from "../courses.actions";
-import { useAppState } from "../../../store";
 
 export const NewCourse = () => {
-  const {dispatch} = useAppState();
+  const dispatch = useDispatch();
+
   const handleCreate = (course) => {
     dispatch(coursesActions.createCourse({
       id: Date.now(),

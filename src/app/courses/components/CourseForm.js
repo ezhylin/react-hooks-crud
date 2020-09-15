@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import TextField from "@material-ui/core/TextField";
 import {Container} from "@material-ui/core";
 import {useHistory} from "react-router-dom";
-import {useAppState} from "../../../store";
+import {useSelector} from "react-redux";
 
 export const CourseForm = ({
  onSubmit,
@@ -14,10 +14,9 @@ export const CourseForm = ({
     description: '',
     authors: [],
   };
-  const [course, setCourse] = useState(initialCourse || defaultCourse);
-  const {state} = useAppState();
+  const [ course, setCourse ] = useState(initialCourse || defaultCourse);
+  const user = useSelector(({ auth }) => auth.user);
   const { goBack } = useHistory();
-  const {user} = state.auth;
 
   const handleChange = ({ target }) => {
     setCourse({

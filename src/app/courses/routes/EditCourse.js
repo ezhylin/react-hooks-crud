@@ -1,19 +1,21 @@
 import React from "react";
 import { useRouteMatch } from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+
 import Button from "@material-ui/core/Button";
 
 import { CourseForm } from '../components';
-import {useAppState} from "../../../store";
 import {coursesActions} from "../courses.actions";
 
 export const EditCourse = () => {
   const { params } = useRouteMatch();
-  const { state, dispatch } = useAppState();
+  const dispatch = useDispatch();
+  const courses = useSelector(state => state.courses);
 
-  const editCourse = state.courses.list.find(course => course.id === Number(params.courseId));
+  const editCourse = courses.list.find(course => course.id === Number(params.courseId));
 
   const handleUpdate = (course) => {
-    dispatch(coursesActions.updateCourse(params.courseId, course));
+    dispatch(coursesActions.updateCourse(Number(params.courseId), course));
   }
 
   return (

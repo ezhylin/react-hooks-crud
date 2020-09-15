@@ -1,11 +1,9 @@
 import React from 'react';
-
-import { Footer, Header } from "./components";
-import { AppStateProvider } from '../store'
+import { Provider } from "react-redux";
 
 import { routes } from './app.routes';
-import { reducer, initialState } from './app.reducer';
-import {RouterOutlet} from "./components/RouterOutlet";
+import { Footer, Header, RouterOutlet } from "./components";
+import { store } from "./store";
 
 const CONTENT_INJECTION = {
   Header,
@@ -14,8 +12,10 @@ const CONTENT_INJECTION = {
 
 export function App() {
   return (
-    <AppStateProvider reducer={reducer} initialState={initialState}>
-      <RouterOutlet routes={routes}>{CONTENT_INJECTION}</RouterOutlet>
-    </AppStateProvider>
+    <Provider store={store}>
+      <RouterOutlet routes={routes}>
+        {CONTENT_INJECTION}
+      </RouterOutlet>
+    </Provider>
   );
 }

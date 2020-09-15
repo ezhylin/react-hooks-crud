@@ -1,10 +1,10 @@
-import combineReducers from 'react-combine-reducers';
+import {combineReducers} from "redux";
 
-import { coursesReducer } from './courses';
-import { authReducer } from './auth';
+import { coursesReducer as courses } from './courses';
+import { authReducer as auth } from './auth';
 
-export const [reducer, initialState] = combineReducers({
-  courses: coursesReducer,
-  auth: authReducer,
+
+export const appReducer = combineReducers({
+  courses,
+  auth,
 });
-

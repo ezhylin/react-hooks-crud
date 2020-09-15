@@ -1,12 +1,10 @@
-import {useAppState} from "../../store";
-import {Route} from "react-router-dom";
 import React from "react";
+import {Route} from "react-router-dom";
 
 export const RouteGuard = ({key, guards = [], ...route}) => {
-  const store = useAppState();
   const checkAccess = (guards) => {
     const defaultPermission = {hasAccess: true, fallback: undefined}
-    const permission = guards.map((guard) => guard(store)).find(permission => !permission.hasAccess)
+    const permission = guards.map((guard) => guard()).find(permission => !permission.hasAccess)
 
     return permission || defaultPermission;
   }
