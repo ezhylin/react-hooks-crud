@@ -4,16 +4,21 @@ import Button from "@material-ui/core/Button";
 
 import { CourseForm } from '../components';
 import {useAppState} from "../../../store";
+import {coursesActions} from "../courses.actions";
 
 export const EditCourse = () => {
   const { params } = useRouteMatch();
-  const { state } = useAppState();
-  console.log(state)
+  const { state, dispatch } = useAppState();
+
   const editCourse = state.courses.list.find(course => course.id === Number(params.courseId));
+
+  const handleUpdate = (course) => {
+    dispatch(coursesActions.updateCourse(params.courseId, course));
+  }
 
   return (
     <CourseForm
-      onSubmit={() => console.log('edit course')}
+      onSubmit={handleUpdate}
       course={editCourse}
     >
       {{

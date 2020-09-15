@@ -7,9 +7,11 @@ import { useAppState } from "../../../store";
 
 export const NewCourse = () => {
   const {dispatch} = useAppState();
-
   const handleCreate = (course) => {
-    dispatch(coursesActions.createCourse({ id: Date.now(), ...course }))
+    dispatch(coursesActions.createCourse({
+      id: Date.now(),
+      ...course,
+    }))
   };
 
   return (

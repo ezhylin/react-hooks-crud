@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import TextField from "@material-ui/core/TextField";
 import {Container} from "@material-ui/core";
 import {useHistory} from "react-router-dom";
+import {useAppState} from "../../../store";
 
 export const CourseForm = ({
  onSubmit,
@@ -10,10 +11,13 @@ export const CourseForm = ({
 }) => {
   const defaultCourse = {
     title: '',
-    description: ''
+    description: '',
+    authors: [],
   };
   const [course, setCourse] = useState(initialCourse || defaultCourse);
-  const history = useHistory();
+  const {state} = useAppState();
+  const { goBack } = useHistory();
+  const {user} = state.auth;
 
   const handleChange = ({ target }) => {
     setCourse({
@@ -28,10 +32,11 @@ export const CourseForm = ({
     const nextCourse = {
       ...course,
       image: 'https://source.unsplash.com/random',
+      authors: [...new Set([...course.authors, user.id])]
     };
 
     onSubmit(nextCourse);
-    history.goBack();
+    goBack();
   }
 
   const { Title, Button } = children;

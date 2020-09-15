@@ -5,6 +5,10 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import {useHistory} from "react-router";
+import {Link} from "react-router-dom";
+import {useAppState} from "../../store";
+import {UserInfo} from "../user";
+import {authActions} from "../auth/state/auth.actions";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,18 +24,33 @@ const useStyles = makeStyles((theme) => ({
 
 export const Header = () => {
   const classes = useStyles();
-  const history = useHistory();
+  const { push } = useHistory();
+  const { state, dispatch } = useAppState();
+
+  const {user} = state.auth;
+
+  const handleLogout = () => {
+    dispatch(authActions.logout());
+    push('/sign-in');
+  }
 
   return (
     <AppBar position="static">
       <Toolbar>
         <Typography variant="h6" className={classes.title}>
-          Courses
+          <Link to="/" style={{ color: 'inherit' }}>Courses</Link>
         </Typography>
-        <Button color="inherit" onClick={() => {
-          console.log('click')
-          history.push('/')
-        }}>Login</Button>
+        {
+          !!user
+            ? (
+              <UserInfo {...user} onLogout={handleLogout}/>
+            )
+            : (
+              <Button color="inherit" onClick={() => {
+                push('/sign-in')
+              }}>Login</Button>
+            )
+        }
       </Toolbar>
     </AppBar>
   );

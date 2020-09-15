@@ -1,19 +1,24 @@
+import { v1 } from 'uuid';
 import { NewCourse, EditCourse, Dashboard} from "./routes";
+import {useAuth} from "../auth/useAuth";
 
 export const coursesRoutes = [
   {
     path: '/courses/new',
     component: NewCourse,
-    key: 0,
+    guards: [useAuth],
+    key: v1(),
   },
   {
     path: '/courses/:courseId',
     component: EditCourse,
-    key: 1,
+    guards: [useAuth],
+    key: v1(),
   },
   {
     path: '/courses',
     component: Dashboard,
-    key: 2,
+    guards: [useAuth],
+    key: v1(),
   },
 ]

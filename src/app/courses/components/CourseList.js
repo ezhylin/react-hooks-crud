@@ -33,6 +33,11 @@ export const CourseList = ({
               <Typography>
                 {course.description}
               </Typography>
+              {
+                course.authors.length > 0 && course.authors.map((authorId) => (
+                  <span key={authorId}>{authorId}</span>
+                ))
+              }
             </CardContent>
             <CardActions>
               <Button onClick={() => onDelete(course.id)} size="small" color="default">

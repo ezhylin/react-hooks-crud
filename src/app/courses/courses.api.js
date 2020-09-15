@@ -8,7 +8,7 @@ export const coursesApi = {
   },
 
   getById(courseId) {
-
+    return http.get(`${this._url}/${courseId}`);
   },
 
   create(course) {
