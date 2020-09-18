@@ -4,10 +4,12 @@ import { Provider } from "react-redux";
 import { routes } from './app.routes';
 import { Footer, Header, RouterOutlet } from "./components";
 import { store } from "./store";
+import {Loader} from "./shared";
 
 const CONTENT_INJECTION = {
   Header,
   Footer,
+  Loader,
 }
 
 export function App() {

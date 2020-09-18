@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Link as RouterLink, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -12,9 +12,8 @@ import {coursesActions} from "../courses.actions";
 export const Dashboard = () => {
   const location = useLocation();
   const history = useHistory();
-
-  const dispatch = useDispatch();
   const courses = useSelector(state => state.courses);
+  const dispatch = useDispatch();
 
   const handleEdit = courseId => {
     history.push(`${location.pathname}/${courseId}`);
@@ -23,6 +22,10 @@ export const Dashboard = () => {
   const handleDelete = (courseId) => {
     dispatch(coursesActions.deleteCourse(courseId));
   }
+
+  useEffect(() => {
+    dispatch(coursesActions.fetchCourseList());
+  }, [dispatch]);
 
   return (
     <Container maxWidth="md">

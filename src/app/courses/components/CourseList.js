@@ -19,8 +19,8 @@ export const CourseList = ({
           <Grid item key={course.id} xs={12} sm={6} md={4}>
             <Card>
               <CardMedia
-                image={course.image}
-                title={course.title}
+                image="https://source.unsplash.com/random"
+                title={course.name}
                 style={{
                   paddingTop: '56.25%'
                 }}
@@ -28,16 +28,11 @@ export const CourseList = ({
             </Card>
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
-                {course.title}
+                {course.name}
               </Typography>
               <Typography>
                 {course.description}
               </Typography>
-              {
-                course.authors.length > 0 && course.authors.map((authorId) => (
-                  <span key={authorId}>{authorId}</span>
-                ))
-              }
             </CardContent>
             <CardActions>
               <Button onClick={() => onDelete(course.id)} size="small" color="default">

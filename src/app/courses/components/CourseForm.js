@@ -10,7 +10,7 @@ export const CourseForm = ({
  course: initialCourse,
 }) => {
   const defaultCourse = {
-    title: '',
+    name: '',
     description: '',
     authors: [],
   };
@@ -47,10 +47,10 @@ export const CourseForm = ({
           fullWidth
           margin="normal"
           id="course_title"
-          label="Title"
+          label="Name"
           variant="outlined"
-          name="title"
-          value={course.title}
+          name="name"
+          value={course.name}
           onChange={handleChange}
         />
         <TextField

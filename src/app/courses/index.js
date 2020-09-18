@@ -1,4 +1,4 @@
 export { coursesReducer } from './courses.reducer';
-export { coursesApi } from './courses.api';
+export { coursesSagas } from './courses.sagas';
 
 export { coursesRoutes } from './courses.routes';

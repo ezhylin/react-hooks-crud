@@ -1,5 +1,6 @@
 import React from "react";
 import {useDispatch} from "react-redux";
+import { v1 } from "uuid";
 
 import Button from "@material-ui/core/Button";
 
@@ -11,7 +12,7 @@ export const NewCourse = () => {
 
   const handleCreate = (course) => {
     dispatch(coursesActions.createCourse({
-      id: Date.now(),
+      id: v1(),
       ...course,
     }))
   };

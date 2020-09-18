@@ -4,7 +4,7 @@ import {BrowserRouter as Router, Switch} from "react-router-dom";
 import {RouteGuard} from "./RouteGuard";
 
 export const RouterOutlet = ({ routes, children }) => {
-  const { Header, Footer } = children;
+  const { Header, Footer, Loader } = children;
 
   return (
     <Router>
@@ -16,6 +16,7 @@ export const RouterOutlet = ({ routes, children }) => {
           </Switch>
         </main>
         <Footer />
+        <Loader />
       </div>
     </Router>
   );

@@ -6,6 +6,12 @@ const initialState = {
 
 export const coursesReducer = (state = initialState, action) => {
   switch (action.type) {
+    case coursesActionTypes.FETCH_COURSE_LIST_SUCCESS: {
+      return {
+        ...state,
+        list: [...action.courses]
+      }
+    }
     case coursesActionTypes.CREATE_COURSE: {
       return {
         ...state,
